@@ -2,6 +2,8 @@ package br.com.personalproject.siseventos.exception.errorresponse;
 
 import java.time.LocalDateTime;
 
+import br.com.personalproject.siseventos.exception.base.BaseException;
+
 public class ErrorResponse {
 
     private String message;
@@ -9,9 +11,9 @@ public class ErrorResponse {
     private String path;
     private LocalDateTime timestamp;
 
-    public ErrorResponse(String message, int status, String path) {
-        this.message = message;
-        this.status = status;
+    public ErrorResponse(BaseException baseException, int status, String path) {
+        this.message = baseException.getMessage();
+        this.status = baseException.getStatus().value();
         this.path = path;
         this.timestamp = LocalDateTime.now();
     }

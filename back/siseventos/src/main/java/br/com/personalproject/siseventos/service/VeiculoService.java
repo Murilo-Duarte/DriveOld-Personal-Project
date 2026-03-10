@@ -8,6 +8,7 @@ import br.com.personalproject.siseventos.dto.VeiculoRequestDTO;
 import br.com.personalproject.siseventos.dto.VeiculoResponseDTO;
 import br.com.personalproject.siseventos.entity.Cliente;
 import br.com.personalproject.siseventos.entity.Veiculo;
+import br.com.personalproject.siseventos.exception.business.veiculo.VeiculoNaoEncontradoException;
 import br.com.personalproject.siseventos.mapper.VeiculoMapper;
 import br.com.personalproject.siseventos.repository.ClienteRepository;
 import br.com.personalproject.siseventos.repository.VeiculoRepository;
@@ -48,7 +49,7 @@ public class VeiculoService {
 
     public VeiculoResponseDTO atualizarVeiculo(VeiculoRequestDTO dto, Long idVeiculo) {
 
-        Veiculo veiculo = veiculoRepository.findById(idVeiculo).orElseThrow(() -> new RuntimeException("Veiculo não encontrado"));
+        Veiculo veiculo = veiculoRepository.findById(idVeiculo).orElseThrow(() -> new VeiculoNaoEncontradoException("Veiculo não encontrado"));
 
         veiculo = VeiculoMapper.toUpdateEntity(dto, veiculo);
 

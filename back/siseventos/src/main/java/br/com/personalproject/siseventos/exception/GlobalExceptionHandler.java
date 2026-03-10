@@ -17,6 +17,6 @@ public class GlobalExceptionHandler {
         
              return ResponseEntity
                      .status(HttpStatus.NOT_FOUND)
-                     .body(new ErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND.value(), request.getRequestURI()));
+                     .body(new ErrorResponse(ex, ex.getStatus().value(), request.getRequestURI()));
         }
 }
