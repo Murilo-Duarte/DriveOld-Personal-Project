@@ -14,3 +14,5 @@ public class BaseException extends RuntimeException {
         this.status = status;
     }
 }
+
+//teste sonar
